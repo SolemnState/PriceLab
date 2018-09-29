@@ -14,6 +14,7 @@ private:
 	int Cost;
 public:
 	Price();
+	Price(const Price*);
 	~Price();
 	void show();
 	string getProductName();
@@ -21,5 +22,6 @@ public:
 	void ShowProduct();
 	void ShowCost();
 	int getCost();
+	Price* operator=(Price*);
 
 };

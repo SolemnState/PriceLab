@@ -22,6 +22,16 @@ Price::Price()
 	cout << "Enter the price:";
 	cin >> Cost;
 }
+
+Price::Price(const Price*)
+{
+	cout << "copy ctor" << endl;
+
+	this->ShopName = ShopName;
+	this->ProductName = ProductName;
+	this->Cost = Cost;
+}
+
 Price :: ~Price()
 {
 	cout << "dtor" << endl;
@@ -51,4 +61,12 @@ void Price::ShowProduct()
 void Price::ShowCost()
 {
 	cout << "Price:" << Cost << endl;
+}
+
+Price* Price::operator=(Price*)
+{
+	this->ProductName = ProductName;
+	this->ShopName = ShopName;
+	this->Cost = Cost;
+	return this;
 }
