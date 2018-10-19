@@ -7,8 +7,6 @@ using namespace std;
 class Price
 {
 private:
-	//char *ProductName = nullptr;
-	//char *ShopName = nullptr;
 	string ProductName;
 	string ShopName;
 	int Cost;
@@ -17,11 +15,15 @@ public:
 	Price(const Price*);
 	~Price();
 	void show();
+	void ShowProductAndCost();
 	string getProductName();
 	string getShopName(); 
 	void ShowProduct();
 	void ShowCost();
 	int getCost();
 	Price* operator=(Price*);
+	Price* operator++();
+	void SetNewObject();
+
 
 };

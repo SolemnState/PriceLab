@@ -5,43 +5,38 @@ using namespace std;
 
 Price::Price()
 {
-	cout << "ctor" << endl;
-	int i = 0;
+	cout << "Class Price Ctor" << endl;
 	cout << "Enter name of the shop: ";
 	cin >> ShopName;
-	/*ShopName = (char*)malloc(sizeof(char));		
-	while ((*ShopName = getchar()) != '\n')
-		ShopName = (char*)realloc(ShopName, 1 + i++ * sizeof(char));
-	cout << "Enter name of the product: ";
-	i = 0;
-	ProductName = (char*)malloc(sizeof(char));
-	while ((*ProductName = getchar()) != '\n')
-		ShopName = (char*)realloc(ProductName, 1 + i++ * sizeof(char));*/
 	cout << "Enter name of the product: ";
 	cin >> ProductName;
 	cout << "Enter the price:";
 	cin >> Cost;
 }
 
-Price::Price(const Price*)
+Price::Price(const Price* P)
 {
 	cout << "copy ctor" << endl;
 
-	this->ShopName = ShopName;
-	this->ProductName = ProductName;
-	this->Cost = Cost;
+	this->ShopName = P->ShopName;
+	this->ProductName = P->ProductName;
+	this->Cost = P->Cost;
 }
 
 Price :: ~Price()
 {
-	cout << "dtor" << endl;
-	//free(ShopName);
-	//free(ProductName);
+	cout << "Price dtor" << endl;
 }
 
 void Price::show()
 {
 	cout << "Name of the shop:"<< ShopName << endl;
+	cout << "Name of the product:" << ProductName << endl;
+	cout << "Price:" << Cost << endl;
+}
+
+void Price::ShowProductAndCost()
+{
 	cout << "Name of the product:" << ProductName << endl;
 	cout << "Price:" << Cost << endl;
 }
@@ -63,10 +58,31 @@ void Price::ShowCost()
 	cout << "Price:" << Cost << endl;
 }
 
-Price* Price::operator=(Price*)
+Price* Price::operator=(Price* P)
 {
-	this->ProductName = ProductName;
-	this->ShopName = ShopName;
-	this->Cost = Cost;
+	cout << "Operator=" << endl;
+	this->ProductName = P->ProductName;
+	this->ShopName = P->ShopName;
+	this->Cost = P->Cost;
 	return this;
+}
+
+/*Price* Price::operator+=(Price* P)
+{
+	Price* N = (Price*)malloc(sizeof(Price)*9);
+	memcpy(N, P, 8);
+	N[8 + 1] = new (N) Price();
+	delete[] P;
+	return N;
+}*/
+
+void Price::SetNewObject()
+{
+	cout << "Dolbaeb" << endl;
+	cout << "Enter name of the shop: ";
+	cin >> ShopName;
+	cout << "Enter name of the product: ";
+	cin >> ProductName;
+	cout << "Enter the price:";
+	cin >> Cost;
 }
