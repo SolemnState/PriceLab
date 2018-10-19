@@ -15,8 +15,6 @@ public:
 	void showContainer();
 	Container& operator ++();
 	Container& operator --();
-	string getProductName();
-	string getShopName();
 	void AlphaberSort();
 	bool FindShop();
 	int getSize();

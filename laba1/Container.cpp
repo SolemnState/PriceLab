@@ -37,7 +37,7 @@ using namespace std;
 		Price* X = new Price;
 		newC.Data[(newC.size) - 1] = X;
         this->size++;
-        Data=new Price*[this->size];
+        this->Data=new Price*[this->size];
         for (int i=0;i<this->size;i++)
             this->Data[i]=newC.Data[i];
         return *this;
@@ -48,15 +48,16 @@ using namespace std;
 		cout << "Operator --" << endl;
 		try
 		{
-			if (this->size == 0)
+			if ((this->size)-- == 0)
 				throw -1;
 		}
-		catch (int exc)
+		catch (int err)
 		{
-			cout << "Size of Container can't be below zero!" << endl;
+			cout << "Size of Container can't be below zero! \n Operator -- failed" << endl;
+			exit(err);
 		}
-		Container newC(*this, (this->getSize() - 1));
-		this->size--;
+		Container newC(*this, (this->size));
+		this->Data = new Price*[this->size];
 		for (int i = 0; i<this->size; i++)
 			this->Data[i] = newC.Data[i];
 		return *this;
@@ -121,11 +122,3 @@ using namespace std;
 		}
 		return flag;
 	}
-	/*string Container::getProductName()
-	{
-		return	Data->ProductName;
-	}
-	string Container::getShopName()
-	{
-		return this->
-	}*/

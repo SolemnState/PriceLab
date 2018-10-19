@@ -20,10 +20,7 @@ public:
 	string getShopName(); 
 	void ShowProduct();
 	void ShowCost();
-	int getCost();
 	Price* operator=(Price*);
-	Price* operator++();
-	void SetNewObject();
 
 
 };

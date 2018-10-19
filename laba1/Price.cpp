@@ -66,23 +66,3 @@ Price* Price::operator=(Price* P)
 	this->Cost = P->Cost;
 	return this;
 }
-
-/*Price* Price::operator+=(Price* P)
-{
-	Price* N = (Price*)malloc(sizeof(Price)*9);
-	memcpy(N, P, 8);
-	N[8 + 1] = new (N) Price();
-	delete[] P;
-	return N;
-}*/
-
-void Price::SetNewObject()
-{
-	cout << "Dolbaeb" << endl;
-	cout << "Enter name of the shop: ";
-	cin >> ShopName;
-	cout << "Enter name of the product: ";
-	cin >> ProductName;
-	cout << "Enter the price:";
-	cin >> Cost;
-}
