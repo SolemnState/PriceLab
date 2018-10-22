@@ -46,16 +46,7 @@ using namespace std;
 	Container& Container:: operator --()
 	{
 		cout << "Operator --" << endl;
-		try
-		{
-			if ((this->size)-- == 0)
-				throw -1;
-		}
-		catch (int err)
-		{
-			cout << "Size of Container can't be below zero! \n Operator -- failed" << endl;
-			exit(err);
-		}
+		this->size--;
 		Container newC(*this, (this->size));
 		this->Data = new Price*[this->size];
 		for (int i = 0; i<this->size; i++)
