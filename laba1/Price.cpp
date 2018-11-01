@@ -14,13 +14,13 @@ Price::Price()
 	cin >> Cost;
 }
 
-Price::Price(const Price* P)
+Price::Price(const Price& P)
 {
 	cout << "copy ctor" << endl;
 
-	this->ShopName = P->ShopName;
-	this->ProductName = P->ProductName;
-	this->Cost = P->Cost;
+	this->ShopName = P.ShopName;
+	this->ProductName = P.ProductName;
+	this->Cost = P.Cost;
 }
 
 Price :: ~Price()
@@ -58,11 +58,11 @@ void Price::ShowCost()
 	cout << "Price:" << Cost << endl;
 }
 
-Price* Price::operator=(Price* P)
+Price& Price::operator=(Price& P)
 {
-	cout << "Operator=" << endl;
-	this->ProductName = P->ProductName;
-	this->ShopName = P->ShopName;
-	this->Cost = P->Cost;
-	return this;
+	cout << "Operator= Price" << endl;
+	this->ProductName = P.ProductName;
+	this->ShopName = P.ShopName;
+	this->Cost = P.Cost;
+	return *this;
 }

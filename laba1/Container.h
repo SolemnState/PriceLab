@@ -12,11 +12,14 @@ public:
 	
 	~Container();
 	Container(Container C, int value);
+	Container(int value);
 	void showContainer();
+	Container& operator +=(Price* P);
 	Container& operator ++();
 	Container& operator --();
 	void AlphaberSort();
-	bool FindShop();
+	Container* FindShop(string name);
 	int getSize();
+	bool isEmpty();
 
 };

@@ -12,7 +12,7 @@ private:
 	int Cost;
 public:
 	Price();
-	Price(const Price*);
+	Price(const Price& P);
 	~Price();
 	void show();
 	void ShowProductAndCost();
@@ -20,7 +20,7 @@ public:
 	string getShopName(); 
 	void ShowProduct();
 	void ShowCost();
-	Price* operator=(Price*);
+	Price& operator=(Price& P);
 
 
 };

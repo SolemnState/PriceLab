@@ -5,7 +5,7 @@ using namespace std;
     Container::Container()
     {
         cout<<"Container Ctor"<<endl;
-        size=2;
+        size=3;
         Data=new Price*[size];
         for (int i=0;i<size;i++)
             Data[i]=new Price;
@@ -23,6 +23,13 @@ using namespace std;
         for (int i=0;i<(C.size < this->size ? C.size : this->size);i++)
                 this->Data[i]=C.Data[i];
     }
+
+	Container::Container(int value)
+	{
+		cout << "ctor with param value" << endl;
+		size = value;
+		Data = new Price*[size];
+	}
 
      void Container::showContainer()
     {
@@ -42,6 +49,19 @@ using namespace std;
             this->Data[i]=newC.Data[i];
         return *this;
     }
+
+
+	Container& Container:: operator +=(Price* P)
+	{
+		cout << "Operator +=" << endl;
+		Container newC(*this, (this->getSize() + 1));
+		newC.Data[(newC.size) - 1] = P;
+		this->size++;
+		this->Data = new Price*[this->size];
+		for (int i = 0; i<this->size; i++)
+			this->Data[i] = newC.Data[i];
+		return *this;
+	}
 
 	Container& Container:: operator --()
 	{
@@ -78,16 +98,16 @@ using namespace std;
 					}
 				}
 
-			}
 
-			if (min_idx != i)
-			{
-				Price* temp_P = new Price(this->Data[i]);
-				this->Data[i] = this->Data[min_idx];
-				this->Data[min_idx] = temp_P;
-				min_idx = i;
-			}
 
+				if (min_idx != i)
+				{
+					Price* temp_P = new Price(*Data[i]);
+					this->Data[i] = this->Data[min_idx];
+					this->Data[min_idx] = temp_P;
+					min_idx = i;
+				}
+			}
 		}
 	}
 
@@ -95,21 +115,31 @@ using namespace std;
     {
         return this->size;
     }
-	bool Container:: FindShop()
+
+	Container* Container::FindShop(string name)
 	{
-		string Shop;
-		cout << "Enter the name of the shop to find:";
-		cin >> Shop;
-		bool flag = false;
+		int* idxArray=new int[this->size];
+		int j = 0;
 		for (int i = 0; i < size; i++)
 		{
 			string temp = this->Data[i]->getShopName();
-			if ((Shop == temp) == true)
+			if ((name == temp) == true)
 			{
-				flag = true;
-				this->Data[i]->ShowProductAndCost();
+				idxArray[j] = i;
+				j++;
 			}
-
+			
 		}
-		return flag;
+		Container* subC=new Container(j);
+		for (int i = 0; i < j; i++)
+			subC->Data[i] = this->Data[idxArray[i]];
+		delete[] idxArray;
+		return subC;
+	}
+
+	bool Container::isEmpty()
+	{
+		if (this->size == 0)
+			return true;
+		else return false;
 	}
