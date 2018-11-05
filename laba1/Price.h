@@ -14,13 +14,11 @@ public:
 	Price();
 	Price(const Price& P);
 	~Price();
-	void show();
-	void ShowProductAndCost();
+	Price& operator=(Price& P);
 	string getProductName();
 	string getShopName(); 
 	void ShowProduct();
 	void ShowCost();
-	Price& operator=(Price& P);
-
-
+	void show();
+	void ShowProductAndCost();
 };

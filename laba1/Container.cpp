@@ -37,20 +37,6 @@ using namespace std;
             Data[i]->show();
     }
 
-    Container& Container:: operator ++()
-    {
-        cout<<"Operator ++"<<endl;
-		Container newC (*this, (this->getSize() + 1));
-		Price* X = new Price;
-		newC.Data[(newC.size) - 1] = X;
-        this->size++;
-        this->Data=new Price*[this->size];
-        for (int i=0;i<this->size;i++)
-            this->Data[i]=newC.Data[i];
-        return *this;
-    }
-
-
 	Container& Container:: operator +=(Price* P)
 	{
 		cout << "Operator +=" << endl;

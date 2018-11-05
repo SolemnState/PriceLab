@@ -8,17 +8,15 @@ private:
 	Price** Data;
 	int size;
 public:
-	Container();
-	
+	Container();	
 	~Container();
 	Container(Container C, int value);
-	Container(int value);
-	void showContainer();
+	Container(int value);	
 	Container& operator +=(Price* P);
-	Container& operator ++();
 	Container& operator --();
-	void AlphaberSort();
 	Container* FindShop(string name);
+	void AlphaberSort();
+	void showContainer();
 	int getSize();
 	bool isEmpty();
 
